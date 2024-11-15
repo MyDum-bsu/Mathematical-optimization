@@ -1,0 +1,11 @@
+# This file is used internally by FFMPEG.
+file 'file:/home/mydum/PycharmProjects/Mathematical optimization/СТЗ/media/videos/scene/1080p60/partial_movie_files/SymmetricGraph/3529212410_368639009_223132457.mp4'
+file 'file:/home/mydum/PycharmProjects/Mathematical optimization/СТЗ/media/videos/scene/1080p60/partial_movie_files/SymmetricGraph/3040924799_2743648947_3238632333.mp4'
+file 'file:/home/mydum/PycharmProjects/Mathematical optimization/СТЗ/media/videos/scene/1080p60/partial_movie_files/SymmetricGraph/3040924799_1605453991_1927321258.mp4'
+file 'file:/home/mydum/PycharmProjects/Mathematical optimization/СТЗ/media/videos/scene/1080p60/partial_movie_files/SymmetricGraph/3040924799_3765074170_2278234458.mp4'
+file 'file:/home/mydum/PycharmProjects/Mathematical optimization/СТЗ/media/videos/scene/1080p60/partial_movie_files/SymmetricGraph/3040924799_512780880_634874060.mp4'
+file 'file:/home/mydum/PycharmProjects/Mathematical optimization/СТЗ/media/videos/scene/1080p60/partial_movie_files/SymmetricGraph/3040924799_1141282389_2702491179.mp4'
+file 'file:/home/mydum/PycharmProjects/Mathematical optimization/СТЗ/media/videos/scene/1080p60/partial_movie_files/SymmetricGraph/3040924799_184981486_3159539128.mp4'
+file 'file:/home/mydum/PycharmProjects/Mathematical optimization/СТЗ/media/videos/scene/1080p60/partial_movie_files/SymmetricGraph/3040924799_1141282389_1044687680.mp4'
+file 'file:/home/mydum/PycharmProjects/Mathematical optimization/СТЗ/media/videos/scene/1080p60/partial_movie_files/SymmetricGraph/3040924799_3359082919_1835497889.mp4'
+file 'file:/home/mydum/PycharmProjects/Mathematical optimization/СТЗ/media/videos/scene/1080p60/partial_movie_files/SymmetricGraph/3040924799_1141282389_806717108.mp4'
