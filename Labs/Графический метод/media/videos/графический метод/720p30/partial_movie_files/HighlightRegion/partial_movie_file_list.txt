@@ -1,0 +1,5 @@
+# This file is used internally by FFMPEG.
+file 'file:/home/mydum/Desktop/BSU/semesters/5 semester/MO/графический метод/media/videos/графический метод/720p30/partial_movie_files/HighlightRegion/274514146_3151275418_223132457.mp4'
+file 'file:/home/mydum/Desktop/BSU/semesters/5 semester/MO/графический метод/media/videos/графический метод/720p30/partial_movie_files/HighlightRegion/2789044632_345352296_3073566967.mp4'
+file 'file:/home/mydum/Desktop/BSU/semesters/5 semester/MO/графический метод/media/videos/графический метод/720p30/partial_movie_files/HighlightRegion/2789044632_2646026271_2443420087.mp4'
+file 'file:/home/mydum/Desktop/BSU/semesters/5 semester/MO/графический метод/media/videos/графический метод/720p30/partial_movie_files/HighlightRegion/2789044632_345352296_3595644491.mp4'
