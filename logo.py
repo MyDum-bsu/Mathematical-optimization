@@ -1,8 +1,8 @@
 from manim import *
 import numpy as np
 
-a = 2.4
-b = 1.2
+a = 2
+b = 1
 h = np.sqrt(a ** 2 - b ** 2)
 #
 c = a + b
@@ -16,7 +16,7 @@ angle_step = TAU / num_lines
 
 start_stroke = 7
 
-br_step = 1 / num_lines * 1.3
+br_step = 1 / num_lines * 1.2
 st_step = start_stroke / num_lines
 
 SECTOR_COLOR = '#1f1c17'
@@ -43,7 +43,7 @@ def get_center_curves():
             radial_curve,
             t_range=np.array([0, 1]),
             color=CURVE_COLOR,
-            stroke_width=1
+            stroke_width=3
         )
         curves.add(curve)
     return curves
@@ -85,7 +85,7 @@ def draw_right_lines():
             end_point = np.array([end_x, end_y, 0])
             x, y = 10 * np.cos(alpha), 10 * np.sin(alpha)
             first_lines.add(
-                Line(end_point, np.array([x, y, 0]), color=LINES_COLOR, stroke_width=0.7, stroke_opacity=0.5))
+                Line(end_point, np.array([x, y, 0]), color=LINES_COLOR, stroke_width=0.7, stroke_opacity=0.9))
             first_lines.add(Line(start_point, end_point, color=GRAY, stroke_width=stroke, stroke_opacity=brightness))
 
         brightness -= br_step
@@ -108,7 +108,7 @@ def draw_left_lines():
 
         x, y = 10 * np.cos(alpha), 10 * np.sin(alpha)
         second_lines.add(
-            Line(end_point, np.array([x, y, 0]), color=LINES_COLOR, stroke_width=0.7, stroke_opacity=0.5))
+            Line(end_point, np.array([x, y, 0]), color=LINES_COLOR, stroke_width=0.7, stroke_opacity=0.9))
 
         if -TAU <= alpha < -3 * PI / 2 or -3 * PI / 2 <= alpha < -PI:
 
@@ -146,12 +146,12 @@ class Logo(Scene):
         circle2 = Circle(radius=a).move_to(RIGHT * b)
         intersection_area = (
             Intersection(circle1, circle2, fill_opacity=0.6).set_color(BLACK).set_stroke(color=CURVE_COLOR, width=2,
-                                                                                         opacity=0.35)
+                                                                                         opacity=0.7)
             .scale(
                 0.93))
         self.add(intersection_area)
         self.add(curves.scale(0.5))
-        self.add(*[Circle(radius=i * a, color=BLACK) for i in np.arange(0.1, 0.357, 0.0225)])
+        self.add(*[Circle(radius=i * a, color=BLACK) for i in np.arange(0.1, 0.357, 0.0225)]) #0.0225
         self.add(Circle(radius=0.388 * a, color=BLACK))
         # ManimColor('#000044')
-        self.add(Circle(radius=0.055 * a, color=DARKER_GRAY, fill_opacity=1))
+        # self.add(Circle(radius=0.055 * a, color=BLAND, fill_opacity=1))
