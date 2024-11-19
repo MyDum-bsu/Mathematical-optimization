@@ -14,16 +14,17 @@ max_curve_radius = a * 0.8
 
 angle_step = TAU / num_lines
 
-start_stroke = 3
+start_stroke = 2
 
-br_step = 1 / num_lines * 1.2
+br_step = 1 / num_lines
 st_step = start_stroke / num_lines
 
 SECTOR_COLOR = '#1f1c17'
 CURVE_COLOR = '#7e4706'
 LINES_COLOR = WHITE
-MAIN_COLOR = BLACK
-heart_scale = 1.8
+MAIN_COLOR = "#8B0000"
+heart_scale_x = 1.8
+heart_scale_y = 1.8
 
 
 def find_circle_point(alpha, invert_x):
@@ -35,11 +36,11 @@ def find_circle_point(alpha, invert_x):
     return np.array([x, y, 0])
 
 
-def find_heart_point(alpha, k=heart_scale):
+def find_heart_point(alpha, k_x=heart_scale_x, k_y=heart_scale_y):
     tan_alpha = np.tan(alpha)
 
     def equation(x):
-        return (1 + tan_alpha ** 2) * x ** 2 - 2 * x ** 1.5 * tan_alpha + x*np.sqrt(k) - k**2
+        return (1 + tan_alpha ** 2) * x ** 2 - 2 * x ** 1.5 * tan_alpha + x * np.sqrt(k_x) - k_y ** 2
 
     x_solutions = fsolve(equation, [0.5])
 
@@ -65,6 +66,7 @@ def draw_right_lines():
 
         if 0 <= alpha <= PI / 2:
             if flag and right_circle_point[1] < right_heart_point[1]:
+                brightness = 1
                 continue
             else:
                 flag = False
@@ -113,7 +115,7 @@ def draw_left_lines():
             Line(end_point, np.array([x, y, 0]), color=LINES_COLOR, stroke_width=0.7, stroke_opacity=1))
 
         if -TAU <= alpha < -3 * PI / 2:
-            left_heart_point, right_heart_point = find_heart_point(alpha+TAU)
+            left_heart_point, right_heart_point = find_heart_point(alpha + TAU)
             second_lines.add(
                 Line(right_heart_point, end_point, color=MAIN_COLOR, stroke_width=stroke, stroke_opacity=brightness))
 
@@ -127,7 +129,7 @@ def draw_left_lines():
             second_lines.add(Line(left_heart_point, left_circle_point, color=MAIN_COLOR, stroke_width=stroke,
                                   stroke_opacity=brightness))
         elif alpha == -PI / 2:
-            left_heart_point, right_heart_point = find_heart_point(alpha-PI)
+            left_heart_point, right_heart_point = find_heart_point(alpha - PI)
             second_lines.add(Line(right_heart_point, left_circle_point, color=MAIN_COLOR, stroke_width=stroke,
                                   stroke_opacity=brightness))
         brightness -= br_step
@@ -146,23 +148,25 @@ def draw_lines():
 def create_heart_shape():
     hearts = VGroup()
 
-    start_color = "#FF69B4"
-    end_color = "#8B0000"
+    start_color = WHITE
+    end_color = "#FF69B4"
 
-    num_steps = int((heart_scale - 0.5) / 0.05)
+    num_steps = int(heart_scale_x * 1.05 / 0.01)
 
-    for i, k in enumerate(np.arange(heart_scale, 0.5, -0.05)):
-        color = interpolate_color(ManimColor(start_color), ManimColor(end_color), i / num_steps)
+    for i, k in enumerate(np.arange(heart_scale_x * 1.05, 0.25, -0.01)):
+        t = i / num_steps
+        color = interpolate_color(ManimColor(start_color), ManimColor(end_color),
+                                  t)
 
-        heart_shape = VMobject(fill_color=color, fill_opacity=1, stroke_width=0)
+        heart_shape = VMobject(fill_color=color, fill_opacity=t, stroke_width=0)
         heart_points = []
 
         for alpha in np.linspace(PI / 2, -PI / 2, num_lines // 2):
-            left_heart_point, right_heart_point = find_heart_point(alpha, k)
+            left_heart_point, right_heart_point = find_heart_point(alpha, 0.1 * k, k)
             heart_points.append(right_heart_point)
 
         for alpha in np.linspace(-PI / 2, PI / 2, num_lines // 2):
-            left_heart_point, right_heart_point = find_heart_point(alpha, k)
+            left_heart_point, right_heart_point = find_heart_point(alpha, 0.1 * k, k)
             heart_points.append(left_heart_point)
 
         heart_shape.set_points_smoothly(heart_points)
@@ -177,7 +181,7 @@ class Heart(Scene):
         self.main_art()
 
     def main_art(self):
-        self.add(Circle(radius=c, color=PINKY, fill_opacity=0.5, stroke_width=0))
+        self.add(Circle(radius=c, color=BLACK, fill_opacity=1, stroke_width=0))
         self.add(*draw_lines())
         self.add(*create_heart_shape())
 
